@@ -36,6 +36,16 @@
 
 	<div class="col-lg-7">
 		<h3>Categories list</h3>
+		<table class="table table-stripped">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Thumbnail</th>
+				</tr>
+			</thead>
+			<tbody id="cat-list"></tbody>
+		</table>
 	</div>
 </div>
 
@@ -129,13 +139,13 @@
 							};
 
 							database.set(cat, function(err) {
-							if(err) {
-								$("#result").attr("class", "alert alert-danger");
-								$("#result").html(err.message);
-							} else {
-								$("#result").attr("class", "alert alert-success");
-								$("#result").html("Category added successfully.");
-							}
+								if(err) {
+									$("#result").attr("class", "alert alert-danger");
+									$("#result").html(err.message);
+								} else {
+									$("#result").attr("class", "alert alert-success");
+									$("#result").html("Category added successfully.");
+								}
 							});
 						});						
 					}
@@ -149,5 +159,36 @@
 		$("#selected-thumbnail").fadeOut();
 		$("#upload-progress").html("Completed.");
 	}
+
+	var dbCategory = firebase.database().ref("categories/");
+	dbCategory.on("value", function(categories) {
+
+		if(categories.exists()) {
+			var cat_html = "";
+
+			categories.forEach(function(category) {
+				cat_html += "<tr>";
+
+				// display name
+				cat_html += "<td>";
+				cat_html += category.key;
+				cat_html += "</td>";
+
+				// display description
+				cat_html += "<td>";
+				cat_html += category.val().desc;
+				cat_html += "</td>";
+
+				// display thumbnail
+				cat_html += "<td><img width='250' height='150' src='";
+				cat_html += category.val().thumbnail;
+				cat_html += "'/></td>";
+				
+				cat_html += "/<tr>";
+			});
+		}
+
+		$("#cat-list").html(cat_html);
+	});
 	
 </script>

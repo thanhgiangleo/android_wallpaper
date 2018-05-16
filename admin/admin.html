@@ -1,6 +1,6 @@
 <html class="h-100">
 	<head>
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 		
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -18,11 +18,11 @@
 				
 					<div class="dropdown navbar-right">
 						<button id="user-email" class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							admin
+							dttgiang@gmaill.com
 						</button>
 
 						<div class="dropdown-menu" aria-labeledby="user-email">
-							<a href="#" class="dropdown-item">Logout</a>
+							<a href="#" class="dropdown-item" id="btn-logout">Logout</a>
 						</div>
 					</div>
 				</div>
@@ -32,14 +32,18 @@
 		<div class="row h-100 bg-light">
 			<div class="col-lg-2 bg-secondary">
 				<ul class="nav flex-column">
-					<li class="nav-item"><a href="#" class="nav-link"><span class="text-dark">Images</span></a></li>
-					<li class="nav-item"><a href="#" class="nav-link"><span class="text-dark">Categories</span></a></li>
+					<li class="nav-item">
+						<a href="#" class="nav-link">
+							<span class="text-dark">Images</span></a></li>
+					<li class="nav-item">
+						<a href="#" class="nav-link" onclick="switchView('views/categories.html')">
+							<span class="text-dark">Categories</span></a></li>
 				</ul>
 			</div>
 
 			<div class="col-lg-10">
-				<div class="container">
-					<h1>Images</h1>
+				<div class="container" id="container">
+					
 				</div>
 			</div>
 		</div>
